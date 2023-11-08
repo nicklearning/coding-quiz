@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+
+#info-tab {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#info-tab a {
+    margin-left: 3%;
+}
+
+#info-tab p {
+    margin-right: 3%;
+}
+
+#start-page-content {
+   width: 75%;
+    text-align: center;
+    margin: auto;
+}
