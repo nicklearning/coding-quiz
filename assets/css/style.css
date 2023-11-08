@@ -17,7 +17,20 @@
 }
 
 #start-page-content {
-   width: 75%;
+    width: 75%;
     text-align: center;
     margin: auto;
+}
+
+#question-container, #response-container, #end-game-container {
+    width: 75%;
+    text-align: left;
+    margin: auto;
+}
+
+
+
+button {
+    display: block;
+    margin: 10px
 }
