@@ -4,7 +4,9 @@ var timeRemaining = document.querySelector("#time");
 var startPage = document.querySelector("#start-page-content");
 var questionContainer = document.querySelector("#question-container");
 var responseContainer = document.querySelector("#response-container");
-var endGameContainer = document.querySelector("#end-game-container")
+var endGameContainer = document.querySelector("#end-game-container");
+var scoreList = document.querySelector("#score-list");
+console.log(scoreList);
 var hr = document.createElement("hr");
 var response = document.createElement("h3");
 
@@ -37,12 +39,12 @@ function setTime() {
         timeRemaining.textContent = time;
 
         if (time === 0 || index === questions.length) {
-    
+
             clearInterval(timerInterval)
             displayEndGame();
         }
     }, 1000)
-}
+};
 
 // start button event listener. Show the question when the start quiz button is clicked.
 startBtn.addEventListener("click", function () {
@@ -86,8 +88,6 @@ function showQuestion(index) {
 
 }
 
-
-// ToDO create question container event listener
 questionContainer.addEventListener("click", function (e) {
     var element = e.target;
 
@@ -104,7 +104,6 @@ questionContainer.addEventListener("click", function (e) {
 
         responseContainer.append(hr);
         responseContainer.append(response);
-
     }
 
     questionContainer.innerHTML = ""; //clear the question and choices if it is not the last question
@@ -113,33 +112,38 @@ questionContainer.addEventListener("click", function (e) {
     console.log(index);
 
     showQuestion(index); //go to the next question
-
 });
 
-
-
+var score = document.getElementById("score");
 
 function displayEndGame() {
-    var h1 = document.createElement("h1");
-    var h3 = document.createElement("h3");
-    var h3Initial = document.createElement("h3");
-    var initialInput = document.createElement("input");
-    var submitBtn = document.createElement("button");
-    h1.textContent = "All done!";
-    h3.textContent = "Your final score is " + time + ".";
-    h3Initial.textContent = "Enter initials:";
-    submitBtn.textContent = "Submit";
-
-    console.log(h3.textContent);
-
-    endGameContainer.append(h1);
-    endGameContainer.append(h3);
-    endGameContainer.append(h3Initial);
-    endGameContainer.append(initialInput);
-    endGameContainer.append(submitBtn);
+    endGameContainer.style.display = "block";
     endGameContainer.append(hr);
     endGameContainer.append(response);
-
-
+    score.textContent = time;
+    console.log(time);
 }
 
+var submitBtn = document.querySelector("#submit-button");
+
+submitBtn.addEventListener("click", function () {
+    var highScore = {
+        initals: document.getElementById("initials").value,
+        score: time,
+    };
+    localStorage.setItem("highscore", JSON.stringify(highScore));
+    window.location.href = "assets/html/highscores.html"
+});
+
+function renderScores() {
+    var lastScore = JSON.parse(localStorage.getItem("highscore"));
+    var myScore = document.createElement('h2');
+    var test = document.createElement('h1');
+    scoreList.append(test);
+    test.textContent = "Muahahaha";
+    scoreList.append(myScore);
+
+    if (lastScore !== null) {
+        myScore.textContent = lastScore.initals + "-" + lastScore.score;
+    }
+}

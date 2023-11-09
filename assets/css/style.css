@@ -22,7 +22,7 @@
     margin: auto;
 }
 
-#question-container, #response-container, #end-game-container {
+#question-container, #response-container, #end-game-container, #high-scores-container {
     width: 75%;
     text-align: left;
     margin: auto;

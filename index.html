@@ -10,7 +10,7 @@
 
 <body>
     <div id="info-tab">
-        <a href="#">View high scores</a>
+        <a href="./assets/html/highscores.html">View high scores</a>
         <p>Time: <span id='time'>0</span></p>
     </div>
     <div id="start-page-content">
@@ -23,7 +23,13 @@
     </div>
     <div id="question-container"></div>
     <div id="response-container"></div>
-    <div id="end-game-container"></div>
+    <div id="end-game-container" style="display: none;">
+        <h1>All done!</h1>
+        <h3>Your final score is <span id="score"></span>.</h3>
+        <label for="initials">Enter initials:</label>
+        <input type="text" id="initials"></input>
+        <button id="submit-button">Submit</button>
+    </div>
 
     <script src="./assets/js/script.js"></script>
 </body>
