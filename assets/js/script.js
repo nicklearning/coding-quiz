@@ -1,3 +1,4 @@
+
 // declare and assign variables
 var startBtn = document.querySelector("#start-quiz");
 var timeRemaining = document.querySelector("#time");
@@ -131,12 +132,16 @@ submitBtn.addEventListener("click", function () {
         score: time,
     };
     localStorage.setItem("highscore", JSON.stringify(highScore));
-    window.location.href = "assets/html/highscores.html"
+    window.location.href = "../highscores.html"
 });
 
+
+// Your code here
+// The `document` object refers to the DOM of the HTML document where this script is included
+
+
+
 // TODO display the scores in the highscores html webpage
-var scoreList = document.querySelector("#score-list");
-console.log(scoreList);
 
 function renderScores() {
     var lastScore = JSON.parse(localStorage.getItem("highscore"));
