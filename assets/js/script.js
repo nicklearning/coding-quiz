@@ -5,8 +5,7 @@ var startPage = document.querySelector("#start-page-content");
 var questionContainer = document.querySelector("#question-container");
 var responseContainer = document.querySelector("#response-container");
 var endGameContainer = document.querySelector("#end-game-container");
-var scoreList = document.querySelector("#score-list");
-console.log(scoreList);
+
 var hr = document.createElement("hr");
 var response = document.createElement("h3");
 
@@ -135,6 +134,10 @@ submitBtn.addEventListener("click", function () {
     window.location.href = "assets/html/highscores.html"
 });
 
+// TODO display the scores in the highscores html webpage
+var scoreList = document.querySelector("#score-list");
+console.log(scoreList);
+
 function renderScores() {
     var lastScore = JSON.parse(localStorage.getItem("highscore"));
     var myScore = document.createElement('h2');
@@ -147,3 +150,9 @@ function renderScores() {
         myScore.textContent = lastScore.initals + "-" + lastScore.score;
     }
 }
+
+// TODO add event listener to the clear button and clear out the highscores
+
+// TODO add JS related questions
+
+// TODO style the app
