@@ -174,7 +174,7 @@ submitBtn.addEventListener("click", function () {
     localStorageData.push(highScore); // pushes the latest value the user submitted into local storage
 
     localStorage.setItem("highscore", JSON.stringify(localStorageData)); // stingify the new data
-    window.location.href = "../../highscores.html" // open up the high scores html page
+    window.location.href = "/highscores.html" // open up the high scores html page
 });
 
 
