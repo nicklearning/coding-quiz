@@ -10,6 +10,6 @@ To take the quiz, navigate to this URL: [JavaScript Quiz](https://nicklearning.g
 
 ## Screenshots 
 
-[Homepage](./assets/img/coding%20quiz%20ss.PNG)
+![Homepage](./assets/img/coding%20quiz%20ss.PNG)
 
-[Highscores](./assets/img/high%20score%20ss.PNG)
+![Highscores](./assets/img/high%20score%20ss.PNG)
