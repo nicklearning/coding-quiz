@@ -95,7 +95,7 @@ function showQuestion(index) {
     questionContainer.append(question);
     question.textContent = questions[index].question;
 
-   
+
     var ul = document.createElement("ul");  // create and append the unordered list to the question container
     questionContainer.append(ul);
 
@@ -174,7 +174,7 @@ submitBtn.addEventListener("click", function () {
     localStorageData.push(highScore); // pushes the latest value the user submitted into local storage
 
     localStorage.setItem("highscore", JSON.stringify(localStorageData)); // stingify the new data
-    window.location.href = "../highscores.html" // open up the high scores html page
+    window.location.href = "../html/highscores.html" // open up the high scores html page
 });
 
 
