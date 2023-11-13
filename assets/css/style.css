@@ -1,5 +1,7 @@
+/* set basic style for the index.html page */
 * {
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 #info-tab {
@@ -22,15 +24,27 @@
     margin: auto;
 }
 
-#question-container, #response-container, #end-game-container, #high-scores-container {
+#question-container,
+#response-container,
+#end-game-container,
+#high-scores-container {
     width: 75%;
     text-align: left;
     margin: auto;
 }
 
-
+/* style the buttons */
 
 button {
     display: block;
-    margin: 10px
+    margin: 10px;
+    color: white;
+    background-color: darkslateblue;
+    font-size: larger;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+button:hover {
+    background-color: blueviolet;
 }

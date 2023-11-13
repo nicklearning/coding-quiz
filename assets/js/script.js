@@ -6,12 +6,10 @@ var startPage = document.querySelector("#start-page-content");
 var questionContainer = document.querySelector("#question-container");
 var responseContainer = document.querySelector("#response-container");
 var endGameContainer = document.querySelector("#end-game-container");
-
-
 var hr = document.createElement("hr");
 var response = document.createElement("h3");
 
-var index = 0; // track the question 
+var index = 0; // track the question while cycling through the array
 var time = 75;
 
 // array of question objects
@@ -69,6 +67,7 @@ var questions = [
 
 ]
 
+// logic for the countdown timer
 function setTime() {
     var timerInterval = setInterval(function () {
         time--;
@@ -84,25 +83,23 @@ function setTime() {
 
 // start button event listener. Show the question when the start quiz button is clicked.
 startBtn.addEventListener("click", function () {
-    timeRemaining.innerHTML = time;
+    timeRemaining.innerHTML = time; // display 75 seconds on the clock
     startPage.innerHTML = ""; // clear the start message
-
-    showQuestion(index);
-    setTime();// start the timer
+    showQuestion(index); // show the first question
+    setTime();// start the countdown timer
 });
 
-
+// function to show each question with a parameter of the index of the question array
 function showQuestion(index) {
-    // create, append, and set the text content for the question
-    var question = document.createElement('h2');
+    var question = document.createElement('h2'); // create, append, and set the text content for the question
     questionContainer.append(question);
     question.textContent = questions[index].question;
 
-    // create and append the unordered list to the question container
-    var ul = document.createElement("ul");
+   
+    var ul = document.createElement("ul");  // create and append the unordered list to the question container
     questionContainer.append(ul);
 
-    // create and append the button elements to the unordered list. Set the data attribute for each button.
+    // create and append the button elements to the unordered list. Set the data attribute for each button to identify correctness of the user's response. 
     var b1 = document.createElement('button');
     b1.setAttribute("data-index", "0");
     ul.append(b1);
@@ -124,13 +121,13 @@ function showQuestion(index) {
 
 }
 
+// add an event listener on the question list to listen for the user's selected answer. 
 questionContainer.addEventListener("click", function (e) {
-    var element = e.target;
+    var element = e.target; // store value of the clicked element
 
-    if (element.matches("button")) {
-        // check the index of the element for correctness
-        var elementIndex = element.getAttribute("data-index");
-        if (elementIndex === questions[index].correctIndex) {
+    if (element.matches("button")) { // event delegation
+        var elementIndex = element.getAttribute("data-index"); // get the index from the selected button
+        if (elementIndex === questions[index].correctIndex) {   // check the index of the element for correctness
             response.textContent = "Correct!"
         } else {
             response.textContent = "Incorrect!"
@@ -142,42 +139,42 @@ questionContainer.addEventListener("click", function (e) {
         responseContainer.append(response);
     }
 
-    questionContainer.innerHTML = ""; //clear the question and choices if it is not the last question
+    questionContainer.innerHTML = ""; // clear the question container after the selection is made
 
-    index++;
+    index++; // increase the index of the array
 
     showQuestion(index); //go to the next question
 });
 
 var score = document.getElementById("score");
 
+// utility function to display the end game content
 function displayEndGame() {
     questionContainer.innerHTML = ""
-    endGameContainer.style.display = "block";
+    endGameContainer.style.display = "block"; // was originally display: none
     endGameContainer.append(hr);
-    endGameContainer.append(response);
-    if (time < 0) {
+    endGameContainer.append(response); // append response from the last question answered
+    if (time < 0) { // don't want to show negative times
         time = 0;
         timeRemaining.textContent = time;
     }
-    score.textContent = time;
+    score.textContent = time; // set the score equal to the time remaining
 }
 
 var submitBtn = document.querySelector("#submit-button");
 
+// add event listener on the submit button to listen for when the user goes to submit their score
 submitBtn.addEventListener("click", function () {
+    var localStorageData = JSON.parse(localStorage.getItem('highscore')) || []; // assign and parse the values in local storage to this variable or assign an empty array
 
-    var localStorageData = JSON.parse(localStorage.getItem('highscore')) || [];
-
-    var highScore = {
+    var highScore = { // create the highscore object
         initals: document.getElementById("initials").value,
         score: time,
     };
+    localStorageData.push(highScore); // pushes the latest value the user submitted into local storage
 
-    localStorageData.push(highScore);
-
-    localStorage.setItem("highscore", JSON.stringify(localStorageData));
-    window.location.href = "../highscores.html"
+    localStorage.setItem("highscore", JSON.stringify(localStorageData)); // stingify the new data
+    window.location.href = "../highscores.html" // open up the high scores html page
 });
 
-// TODO style the app
+

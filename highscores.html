@@ -5,6 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>High Scores</title>
+
+
+    <!-- inline styles for our high score page -->
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            text-align: center;
+            margin: 100px auto;
+        }
+
+        button {
+            color: white;
+            background-color: darkslateblue;
+            font-size: large;
+            padding: 10px;
+            border-radius: 15px;
+        }
+
+        button:hover {
+            background-color: blueviolet;
+            padding: 10px;
+            border-radius: 15px;
+        }
+    </style>
 </head>
 
 <body>
@@ -15,7 +43,9 @@
 
     </div>
 
+
     <script src="./assets/js/highscore.js"></script>
+    <!-- inline script tags to render the scores -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             renderScores();
