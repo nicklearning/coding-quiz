@@ -10,12 +10,18 @@
 <body>
     <h1>High Scores</h1>
     <a href="./index.html"><button>Go Back</button></a>
-    <button>Clear high scores</button>
+    <button id="clear-btn">Clear high scores</button>
     <div id="score-list">
 
     </div>
 
-    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/highscore.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            renderScores();
+
+        })
+    </script>
 </body>
 
 </html>
