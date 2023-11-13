@@ -9,11 +9,7 @@ function renderScores() {
         scoreList.append(myScore);
         myScore.textContent = lastScore[index].initals + " - " + lastScore[index].score;
     }
-
-
-
 }
-
 clearBtn.addEventListener("click", function () {
     localStorage.clear();
     scoreList.innerHTML = ''
